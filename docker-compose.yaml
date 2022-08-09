@@ -1,0 +1,29 @@
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: xxx123456
+    ports:
+      - 3308:3306
+    volumes:
+      - ./mysql/etc:/etc/mysql/conf.d
+      - ./mysql/data:/var/lib/mysql
+  redis:
+    container_name: redis
+    image: redis
+  postgres:
+    container_name: postgres
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: xxx123456
+      PGDATA: /var/lib/postgres/data/pgdata
+    volumes:
+      - ./pg/data:/var/lib/postgres/data
+      - ./pg/etc:/etc/postgresql/postgresql.conf
+    
+  
