@@ -13,6 +13,9 @@ services:
   redis:
     container_name: redis
     image: redis
+    restart: always
+    ports:
+      - 6379:6379
   postgres:
     container_name: postgres
     image: postgres
