@@ -1,14 +1,17 @@
 services:
   mysql:
     container_name: mysql
-    image: mysql
+    image: mysql:5.7
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: xxx123456
+    command: >
+      --character-set-server=utf8mb4 
+      --collation-server=utf8mb4_unicode_ci 
+      --sql-mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
     ports:
-      - 3308:3306
+      - 3306:3306
     volumes:
-      - ./mysql/etc:/etc/mysql/conf.d
       - ./mysql/data:/var/lib/mysql
   redis:
     container_name: redis
